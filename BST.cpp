@@ -1,18 +1,18 @@
 #include <iostream>
 #include <fstream>
 using namespace std;
-
+template <class T>
 class BST {
 public:
 	BST() :parent(nullptr) {}
-	bool add(int x) { // Добавление элемента
+	bool add(T x) { // Добавление элемента
 		if (parent == nullptr) { parent = new Tree(x); return true; }
 		else { parent->add(x); return true; }
 		return false;
 	}
-	bool search(int x) { return(parent->search(x)); } // Поиск
+	bool search(T x) { return(parent->search(x)); } // Поиск
 	bool read_file(char* a) { // Чтение из файла
-		ifstream fin; int x;
+		ifstream fin; T x;
 		fin.open(a);
 		if (fin.is_open()) {
 			while (!fin.eof()) {
@@ -33,8 +33,8 @@ public:
 private:
 	class Tree {
 	public:
-		Tree(int x) :k(x), l(nullptr), r(nullptr) {}
-		void add(int x) { // Добавление элемента
+		Tree(T x) :k(x), l(nullptr), r(nullptr) {}
+		void add(T x) { // Добавление элемента
 			if (x < k) { // Если нововведенный элемент x меньше чем элемент k из семечка дерева, уходим влево
 				if (l != nullptr) l->add(x); // Вставляем элемент на свободный участок
 				if (l == nullptr) l = new Tree(x); // Выделяем память левому подзвену
@@ -44,10 +44,11 @@ private:
 				if (r == nullptr) r = new Tree(x);
 			}
 		}
-			bool search(int x){ // Поиск элемента
-			if (x == k) return true;
-			if (x < k){ if (l != nullptr) l->search(x); else return false; } // Идем в левую сторону и ищем элемент
-			if (x > k){ if (r != nullptr) r->search(x); else return false; } // Идем в правую
+			bool search(T x){ // Поиск элемента
+			if (x == k) {return true;}
+			if (x > k){ if (r != nullptr) return(r->search(x)); // Идем в правую сторону и ищем элемент
+			if (x < k){ if (l != nullptr) return(l->search(x)); // Идем в левую сторону
+			return false;
 			}
 		void print_console() {
 			if (l != nullptr) l->print_console();
@@ -65,7 +66,7 @@ private:
 			fout.close();
 		}
 	private:
-		int k;
+		T k;
 		Tree *l;
 		Tree *r;
 	};
