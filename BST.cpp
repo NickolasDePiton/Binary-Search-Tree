@@ -6,7 +6,7 @@ class BST {
 public:
 	BST() :parent(nullptr) {}
 	bool add(T x) { // Добавление элемента
-		if (parent == nullptr) { parent = new Tree(x); return true; }
+		if (parent == nullptr) { parent = new Node(x); return true; }
 		else { parent->add(x); return true; }
 		return false;
 	}
@@ -31,17 +31,17 @@ public:
 		parent->print_console();
 	}
 private:
-	class Tree {
+	class Node {
 	public:
-		Tree(T x) :k(x), l(nullptr), r(nullptr) {}
+		Node(T x) :k(x), l(nullptr), r(nullptr) {}
 		void add(T x) { // Добавление элемента
 			if (x < k) { // Если нововведенный элемент x меньше чем элемент k из семечка дерева, уходим влево
 				if (l != nullptr) l->add(x); // Вставляем элемент на свободный участок
-				if (l == nullptr) l = new Tree(x); // Выделяем память левому подзвену
+				if (l == nullptr) l = new Node(x); // Выделяем память левому подзвену
 			}
 			if (x > k) { // Иначе идем вправо
 				if (r != nullptr) r->add(x);
-				if (r == nullptr) r = new Tree(x);
+				if (r == nullptr) r = new Node(x);
 			}
 		}
 			bool search(T x){ // Поиск элемента
@@ -67,8 +67,8 @@ private:
 		}
 	private:
 		T k;
-		Tree *l;
-		Tree *r;
+		Node *l;
+		Node *r;
 	};
-	Tree* parent;
+	Node* parent;
 };
