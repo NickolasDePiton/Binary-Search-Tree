@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-set(TESTS_FOR_PROJECT binarysearchtree)
+set(TESTS_FOR_PROJECT BST)
 
 project(Tests)
 
