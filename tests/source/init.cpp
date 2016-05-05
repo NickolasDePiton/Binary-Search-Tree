@@ -174,7 +174,7 @@ SCENARIO("Iscl_add", "[I_a]") {
 	BST<int> tree; int G = 0;
 	tree.add(1);
 	try { tree.add(1); }
-	catch (Already_add &e) { G++; }
+	catch (Busy &e) { G++; }
 	REQUIRE(G == 1);
 }
 
