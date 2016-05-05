@@ -67,3 +67,4 @@ private:
 	Node *l;
 	Node *r;
 };
+#endif
