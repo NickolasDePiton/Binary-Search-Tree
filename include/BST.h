@@ -29,9 +29,9 @@ public:
 	File_Not_Open();
 };
 
-class Already_add : public Exceptions {
+class Busy : public Exceptions {
 public:
-	Already_add();
+	Busy();
 };
 
 class Empty_tree : public Exceptions {
