@@ -40,6 +40,7 @@ bool BST<T>::Node::print_file(ofstream &fout) {
 	}
 	return false;
 }
+template <class T>
 bool BST<T>::Node::print_console() {
 	if (this != nullptr) {
 		if (l != nullptr) l->print_console();
@@ -54,7 +55,7 @@ template <class T>
 BST<T>::BST() : parent(nullptr) {}
 template <class T>
 bool BST<T>::add(T x) {
-	if (parent != nullptr) if (search(x)) throw UThe_est();
+	if (parent != nullptr) if (search(x)) throw Busy();
 	if (parent == nullptr) { parent = new Node(x); return true; }
 	else { parent->add(x); return true; }
 	return false;
