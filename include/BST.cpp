@@ -55,7 +55,7 @@ bool BST<T>::Node::print_console() {
 }
 
 template <class T>
-T BST<T>::Node::min(der* M){
+T BST<T>::Node::min(Node* M){
 	if (M->l) return min(M->l);
 	else return M->k;
 }
@@ -91,11 +91,11 @@ void BST<T>::Node::del(T x){
 
 template <class T>
 void BST<T>::Create_tree_again() {
-	root = nullptr;
+	parent = nullptr;
 }
 
-template <class Z>
-bool BinarySearchTree<Z>::Node::print_console(){
+template <class T>
+bool BinarySearchTree<T>::Node::print_console(){
 	if (this != nullptr){
 		if (l != nullptr) l->print_console();
 		cout << k << " ";
@@ -107,7 +107,7 @@ bool BinarySearchTree<Z>::Node::print_console(){
 
 template <class T>
 void BST<T>::Create_tree_again() {
-	root = nullptr;
+	parent = nullptr;
 }
 
 template <class T>
