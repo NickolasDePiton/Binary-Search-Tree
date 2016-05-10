@@ -76,7 +76,7 @@ void BST<T>::Node::del(T x){
 	}
 	if (x < k) {
 		if ((l->k == x) && (!(l->r)) && (!(l->l))) { l = nullptr; return; }
-		if ((l->k == x) && (l->l) && (l->r)) { l->D = min(l->r); if (l->r->k != min(l->r)) l->r->del(min(l->r)); else l->r = nullptr; return; }
+		if ((l->k == x) && (l->l) && (l->r)) { l->k = min(l->r); if (l->r->k != min(l->r)) l->r->del(min(l->r)); else l->r = nullptr; return; }
 		else; l->del(x);
 		return;
 	}
