@@ -92,7 +92,7 @@ SCENARIO("Search_double", "[search_d]") {
 }
 
 SCENARIO("Del", "[del]"){
-BinarySearchTree<int> tree; int O=0;
+BST<int> tree; int G=0;
 tree.add(8);
 tree.add(6);
 tree.add(12);
@@ -172,8 +172,8 @@ REQUIRE(!tree.search(15));
 REQUIRE(!tree.search(13));
 ///
 try{ tree.del(7);}
-catch(Tree_Was_Deleted &){O++;}
-REQUIRE(O==1);
+catch(Tree_Was_Deleted &){G++;}
+REQUIRE(G==1);
 }
 
 SCENARIO("Read_int", "[read_i]") {
