@@ -111,9 +111,9 @@ bool BST<T>::search(T x) {
 
 template <class T>
 bool BST<T>::del(T x){
-	if (root == nullptr) throw Pustoe_derevo();
+	if (parent == nullptr) throw Empty_tree();
 	if (!this->search(x)) throw Element_not_found();
-	try{ root->del(x); }
+	try{ parent->del(x); }
 	catch (Tree_Was_Deleted &){ throw Tree_Was_Deleted(); }
 	return true;
 }
