@@ -91,7 +91,7 @@ SCENARIO("Search_double", "[search_d]") {
 	REQUIRE(!tree.search(8.14));
 }
 
-SCENARIO("Del", "[del]"){
+/*SCENARIO("Del", "[del]"){
 BST<int> tree; int G=0;
 tree.add(8);
 tree.add(6);
@@ -175,7 +175,7 @@ try{ tree.del(7);}
 catch(Tree_Was_Deleted &){G++;}
 REQUIRE(G==1);
 }
-
+*/
 SCENARIO("Read_int", "[read_i]") {
 	BST<int> tree; ifstream fin("read.txt");
 	fin >> tree;
