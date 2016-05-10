@@ -7,8 +7,8 @@ char* Exceptions::what() { return err; }
 Busy::Busy() : Exceptions("ERROR: Already added") {}
 File_Not_Open::File_Not_Open() : Exceptions("ERROR: file not open!") {}
 Empty_tree::Empty_tree() : Exceptions("ERROR: Tree is empty!") {}
-Element_not_found::Element_not_found() : Iscluchenia("ERROR: Empty") {}
-Tree_Was_Deleted::Tree_Was_Deleted() : Iscluchenia("ERROR: Tree was deleted!") {}
+Element_not_found::Element_not_found() : Exceptions("ERROR: Empty") {}
+Tree_Was_Deleted::Tree_Was_Deleted() : Exceptions("ERROR: Tree was deleted!") {}
 
 
 template <class T>
