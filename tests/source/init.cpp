@@ -91,6 +91,91 @@ SCENARIO("Search_double", "[search_d]") {
 	REQUIRE(!tree.search(8.14));
 }
 
+SCENARIO("Del", "[del]"){
+BinarySearchTree<int> tree; int O=0;
+tree.add(8);
+tree.add(6);
+tree.add(12);
+tree.add(3);
+tree.add(7);
+tree.add(9);
+tree.add(15);
+tree.add(13);
+REQUIRE(tree.del(12));
+REQUIRE(!tree.search(12));
+REQUIRE(tree.search(8));
+REQUIRE(tree.search(6));
+REQUIRE(tree.search(3));
+REQUIRE(tree.search(7));
+REQUIRE(tree.search(9));
+REQUIRE(tree.search(15));
+REQUIRE(tree.search(13));
+///
+REQUIRE(tree.del(3));
+REQUIRE(!tree.search(12));
+REQUIRE(tree.search(8));
+REQUIRE(tree.search(6));
+REQUIRE(!tree.search(3));
+REQUIRE(tree.search(7));
+REQUIRE(tree.search(9));
+REQUIRE(tree.search(15));
+REQUIRE(tree.search(13));
+///
+REQUIRE(tree.del(6));
+REQUIRE(!tree.search(12));
+REQUIRE(tree.search(8));
+REQUIRE(!tree.search(6));
+REQUIRE(!tree.search(3));
+REQUIRE(tree.search(7));
+REQUIRE(tree.search(9));
+REQUIRE(tree.search(15));
+REQUIRE(tree.search(13));
+///
+REQUIRE(tree.del(13));
+REQUIRE(!tree.search(12));
+REQUIRE(tree.search(8));
+REQUIRE(!tree.search(6));
+REQUIRE(!tree.search(3));
+REQUIRE(tree.search(7));
+REQUIRE(tree.search(9));
+REQUIRE(tree.search(15));
+REQUIRE(!tree.search(13));
+///
+REQUIRE(tree.del(8));
+REQUIRE(!tree.search(12));
+REQUIRE(!tree.search(8));
+REQUIRE(!tree.search(6));
+REQUIRE(!tree.search(3));
+REQUIRE(tree.search(7));
+REQUIRE(tree.search(9));
+REQUIRE(tree.search(15));
+REQUIRE(!tree.search(13));
+///
+REQUIRE(tree.del(15));
+REQUIRE(!tree.search(12));
+REQUIRE(!tree.search(8));
+REQUIRE(!tree.search(6));
+REQUIRE(!tree.search(3));
+REQUIRE(tree.search(7));
+REQUIRE(tree.search(9));
+REQUIRE(!tree.search(15));
+REQUIRE(!tree.search(13));
+///
+REQUIRE(tree.del(9));
+REQUIRE(!tree.search(12));
+REQUIRE(!tree.search(8));
+REQUIRE(!tree.search(6));
+REQUIRE(!tree.search(3));
+REQUIRE(tree.search(7));
+REQUIRE(!tree.search(9));
+REQUIRE(!tree.search(15));
+REQUIRE(!tree.search(13));
+///
+try{ tree.del(7);}
+catch(Tree_Was_Deleted &){O++;}
+REQUIRE(O==1);
+}
+
 SCENARIO("Read_int", "[read_i]") {
 	BST<int> tree; ifstream fin("read.txt");
 	fin >> tree;
@@ -198,4 +283,27 @@ SCENARIO("Iscl_pust2", "[I_p2]") {
 	catch (Empty_tree &e) { G++; }
 	fout.close();
 	REQUIRE(G == 1);
+}
+
+SCENARIO("Iscl_del1", "[del1]"){
+BST<int> tree; int G=0;
+try{tree.del(777);}
+catch(Empty_tree &){G++;}
+REQUIRE(G==1);
+}
+
+SCENARIO("Iscl_del2", "[del2]"){
+BST<int> tree; int G=0;
+tree.add(1);
+try{tree.del(2);}
+catch(Element_not_found &){G++;}
+REQUIRE(G==1);
+}
+
+SCENARIO("Iscl_del3", "[del3]"){
+BST<int> tree; int G=0;
+tree.add(1);
+try{tree.del(1);}
+catch(Tree_Was_Deleted &){G++;}
+REQUIRE(G==1);
 }
