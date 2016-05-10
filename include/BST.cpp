@@ -7,6 +7,9 @@ char* Exceptions::what() { return err; }
 Busy::Busy() : Exceptions("ERROR: Already added") {}
 File_Not_Open::File_Not_Open() : Exceptions("ERROR: file not open!") {}
 Empty_tree::Empty_tree() : Exceptions("ERROR: Tree is empty!") {}
+Element_not_found::Element_not_found() : Iscluchenia("ERROR: Empty") {}
+Tree_Was_Deleted::Tree_Was_Deleted() : Iscluchenia("ERROR: Tree was deleted!") {}
+
 
 template <class T>
 BST<T>::Node::Node(T x) : k(x), l(nullptr), r(nullptr) {}
@@ -49,6 +52,62 @@ bool BST<T>::Node::print_console() {
 		return true;
 	}
 	else return false;
+}
+
+template <class T>
+T BST<T>::Node::min(der* M){
+	if (M->l) return min(M->l);
+	else return M->k;
+}
+template <class T>
+void BST<T>::Node::del(T x){
+	if ((x == k) && (!l) && (!r)) { delete this; throw Tree_Was_Deleted(); }
+	if ((x == k) && (!l)) {
+		k = r->k;
+		if (r->l) l = r->l; else l = nullptr;
+		if (r->r) r = r->r; else r = nullptr;
+		return;
+	}
+	if ((x == k) && (!r)) {
+		k = l->k;
+		if (l->r) r = l->r; else r = nullptr;
+		if (l->l) l = l->l; else l = nullptr;
+		return;
+	}
+	if (x < k) {
+		if ((l->k == x) && (!(l->r)) && (!(l->l))) { l = nullptr; return; }
+		if ((l->k == x) && (l->l) && (l->r)) { l->D = min(l->r); if (l->r->k != min(l->r)) l->r->del(min(l->r)); else l->r = nullptr; return; }
+		else; l->del(x);
+		return;
+	}
+	if (x > k) { 
+		if ((r->k == x) && (!(r->r)) && (!(r->l))) { r = nullptr; return; }
+		if ((r->k == x) && (r->l) && (r->r)) { r->k = min(r->r); if (r->r->k != min(r->r)) r->r->del(min(r->r)); else r->r = nullptr; return; }
+		else r->del(x);
+		return;
+	}
+	if ((x == k) && (l) && (r)) { k = min(r); if (r->k != min(r)) r->del(min(r)); else r = nullptr; return; }
+}
+
+template <class T>
+void BST<T>::Create_tree_again() {
+	root = nullptr;
+}
+
+template <class Z>
+bool BinarySearchTree<Z>::Node::print_console(){
+	if (this != nullptr){
+		if (l != nullptr) l->print_console();
+		cout << k << " ";
+		if (r != nullptr) r->print_console();
+		return true;
+	}
+	else return false;
+}
+
+template <class T>
+void BST<T>::Create_tree_again() {
+	root = nullptr;
 }
 
 template <class T>
