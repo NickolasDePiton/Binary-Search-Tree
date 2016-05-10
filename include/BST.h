@@ -73,7 +73,7 @@ public:
 	bool search(T x);
 	bool print_console();
 	void del(T x);
-	T min(der* M);
+	T min(Node* M);
 	bool print_file(ofstream &fout);
 private:
 	T k;
