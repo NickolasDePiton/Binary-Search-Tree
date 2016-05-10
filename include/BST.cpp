@@ -95,22 +95,6 @@ void BST<T>::Create_tree_again() {
 }
 
 template <class T>
-bool BinarySearchTree<T>::Node::print_console(){
-	if (this != nullptr){
-		if (l != nullptr) l->print_console();
-		cout << k << " ";
-		if (r != nullptr) r->print_console();
-		return true;
-	}
-	else return false;
-}
-
-template <class T>
-void BST<T>::Create_tree_again() {
-	parent = nullptr;
-}
-
-template <class T>
 BST<T>::BST() : parent(nullptr) {}
 template <class T>
 bool BST<T>::add(T x) {
