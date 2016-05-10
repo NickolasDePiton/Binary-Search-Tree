@@ -285,7 +285,7 @@ SCENARIO("Iscl_pust2", "[I_p2]") {
 	REQUIRE(G == 1);
 }
 
-SCENARIO("Iscl_del1", "[del1]"){
+/*SCENARIO("Iscl_del1", "[del1]"){
 BST<int> tree; int G=0;
 try{tree.del(777);}
 catch(Empty_tree &){G++;}
