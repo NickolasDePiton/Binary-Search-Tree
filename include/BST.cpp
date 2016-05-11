@@ -89,11 +89,6 @@ void BST<T>::Node::del(T x){
 	if ((x == k) && (l) && (r)) { k = min(r); if (r->k != min(r)) r->del(min(r)); else r = nullptr; return; }
 }
 
-/*template <class T>
-void BST<T>::Create_tree_again() {
-	parent = nullptr;
-}
-*/
 template <class T>
 BST<T>::BST() : parent(nullptr) {}
 template <class T>
