@@ -59,7 +59,6 @@ public:
 	friend ifstream & operator>> <>(ifstream &fin, BST<T> &tree);
 	friend ofstream & operator<< <>(ofstream &fout, BST<T> &tree);
 	bool del(T x);
-	//void Create_tree_again();
 private:
 	class Node;
 	Node* parent;
