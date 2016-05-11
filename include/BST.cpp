@@ -138,3 +138,12 @@ ofstream & operator <<(ofstream & fout, BST<T> & tree) {
 	if (tree.parent->print_file(fout)) return fout;
 	else throw Empty_tree();
 }
+
+template <class T>//parent = new Node(x) massiv[i] = new T[columns]
+Matrix<T>::~Matrix()
+	{
+		if (parent != nullptr)
+		{
+			delete[] parent;
+		}
+	}
