@@ -140,7 +140,7 @@ ofstream & operator <<(ofstream & fout, BST<T> & tree) {
 }
 
 template <class T>//parent = new Node(x) massiv[i] = new T[columns]
-Matrix<T>::~Matrix()
+BST<T>::~parent()
 	{
 		if (parent != nullptr)
 		{
