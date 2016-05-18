@@ -13,6 +13,21 @@ Tree_Was_Deleted::Tree_Was_Deleted() : Exceptions("ERROR: Tree was deleted!") {}
 
 template <class T>
 BST<T>::Node::Node(T x) : k(x), l(nullptr), r(nullptr) {}
+template <class Z>
+void BST<T>::Node::dofree(){
+	if (this){
+	f:
+		if (l){
+			if ((l->l) || (l->r)) l->dofree();
+			else { delete l; l = nullptr; }
+		}
+		if (r){
+			if ((r->l) || (r->r)) r->dofree();
+			else { delete r;  r = nullptr; }
+		}
+		if (l || r) goto f;
+	}
+}
 template <class T>
 void BST<T>::Node::add(T x) {
 	if (x < k) {
@@ -103,7 +118,18 @@ bool BST<T>::search(T x) {
 	if (parent == nullptr) throw Empty_tree();
 	return(parent->search(x));
 }
-
+template <class T>
+BinarySearchTree<T>::BST(initializer_list<T> L){
+	parent = nullptr;
+	for (int i : L)
+	{
+		add(i);
+	}
+}
+template <class T>
+BST<T>::~BST() {
+	parent->dofree(); if(parent) delete parent;
+}
 template <class T>
 bool BST<T>::del(T x){
 	if (parent == nullptr) throw Empty_tree();
