@@ -193,56 +193,56 @@ SCENARIO("Read_double", "[read_d]") {
 
 SCENARIO("Print_int", "[print_file_i]") {
 	BST<int> tree, tree_2; ofstream fout("print.txt", ios::app);
-	tree.add(1);
-	tree.add(2);
-	tree.add(3);
-	fout << tree; fout << -1;
-	fout.close();
-	ifstream fin("print.txt");
-	fin >> tree_2;
-	fin.close();
-	REQUIRE(tree_2.search(1));
-	REQUIRE(tree_2.search(2));
-	REQUIRE(tree_2.search(3));
+	tree.add(7);
+        tree.add(3);
+        tree.add(5);
+        fout<<tree; fout<<-1;
+        fout.close();
+	fstream fin("print.txt");
+	fin>>tree_2;
+        fin.close();
+        REQUIRE(tree_2.search(7));
+        REQUIRE(tree_2.search(3));
+        REQUIRE(tree_2.search(5));
 }
 
 SCENARIO("Print_file_double", "[print_file_d]") {
 	BST<double> tree, tree_2; ofstream fout("print_double.txt", ios::app);
-	tree.add(1.23);
-	tree.add(4.56);
-	tree.add(7.89);
+	tree.add(7.77);
+        tree.add(3.33);
+        tree.add(5.55);
 	fout << tree; fout << -1;
 	fout.close();
 	ifstream fin("print_double.txt");
 	fin >> tree_2;
 	fin.close();
-	REQUIRE(tree_2.search(1.23));
-	REQUIRE(tree_2.search(4.56));
-	REQUIRE(tree_2.search(7.89));
+        REQUIRE(tree_2.search(7.77));
+        REQUIRE(tree_2.search(3.33));
+        REQUIRE(tree_2.search(5.55));
 }
 
 
 SCENARIO("Print_console_int", "[print_console_i]") {
 	BST<int> tree;
-	tree.add(1);
-	tree.add(2);
-	tree.add(3);
+        tree.add(7);
+        tree.add(3);
+        tree.add(5);
 	REQUIRE(cout << tree);
 }
 
 SCENARIO("Print_console_char", "[print_console_c]") {
 	BST<char> tree;
-	tree.add(1);
-	tree.add(2);
-	tree.add(3);
+        tree.add(7);
+        tree.add(3);
+        tree.add(5);
 	REQUIRE(cout << tree);
 }
 
 SCENARIO("Print_console_double", "[print_console_d]") {
 	BST<double> tree;
-	tree.add(1);
-	tree.add(2);
-	tree.add(3);
+        tree.add(7);
+        tree.add(3);
+        tree.add(5);
 	REQUIRE(cout << tree);
 }
 
