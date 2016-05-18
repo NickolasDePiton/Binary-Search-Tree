@@ -53,6 +53,8 @@ template <class T>
 class BST {
 public:
 	BST();
+	BST(initializer_list<T> L);
+	~BST();
 	bool add(T x);
 	bool search(T x);
 	friend ostream & operator<< <>(ostream &out, BST<T> &tree);
@@ -74,6 +76,7 @@ public:
 	void del(T x);
 	T min(Node* M);
 	bool print_file(ofstream &fout);
+	void dofree();
 private:
 	T k;
 	Node *l;
