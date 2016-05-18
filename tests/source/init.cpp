@@ -5,7 +5,7 @@
 using namespace std;
 
 SCENARIO("list_init", "[list]"){
-  BinarySearchTree<int> tree{7,5,9,4,6,8,10};
+  BST<int> tree{7,5,9,4,6,8,10};
   REQUIRE(tree.search(7));
   REQUIRE(tree.search(5));
   REQUIRE(tree.search(9));
