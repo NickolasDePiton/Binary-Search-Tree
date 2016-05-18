@@ -194,7 +194,7 @@ SCENARIO("Read_double", "[read_d]") {
         REQUIRE(tree.search(17.16));
 }
 
-SCENARIO("Print_int", "[print_file_i]") {
+/*SCENARIO("Print_int", "[print_file_i]") {
 	BST<int> tree, tree_2; ofstream fout("print.txt", ios::app);
 	tree.add(7);
         tree.add(3);
@@ -208,7 +208,7 @@ SCENARIO("Print_int", "[print_file_i]") {
         REQUIRE(tree_2.search(3));
         REQUIRE(tree_2.search(5));
 }
-
+*/
 SCENARIO("Print_file_double", "[print_file_d]") {
 	BST<double> tree, tree_2; ofstream fout("print_double.txt", ios::app);
 	tree.add(7.77);
