@@ -76,7 +76,7 @@ public:
 	void del(T x);
 	T min(Node* M);
 	bool print_file(ofstream &fout);
-	void dofree();
+	void do_free();
 private:
 	T k;
 	Node *l;
