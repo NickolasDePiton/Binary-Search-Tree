@@ -4,6 +4,17 @@
 #include <iostream>
 using namespace std;
 
+SCENARIO("list_init", "[list]"){
+  BinarySearchTree<int> tree{7,5,9,4,6,8,10};
+  REQUIRE(tree.search(7));
+  REQUIRE(tree.search(5));
+  REQUIRE(tree.search(9));
+  REQUIRE(tree.search(4));
+  REQUIRE(tree.search(6));
+  REQUIRE(tree.search(8));
+  REQUIRE(tree.search(10));
+}
+
 SCENARIO("Add_int", "[add]") {
 	BST<int> tree;
 	REQUIRE(tree.add(1));
@@ -110,7 +121,7 @@ REQUIRE(tree.search(7));
 REQUIRE(tree.search(9));
 REQUIRE(tree.search(15));
 REQUIRE(tree.search(13));
-///
+//Удаляем корнень
 REQUIRE(tree.del(3));
 REQUIRE(!tree.search(12));
 REQUIRE(tree.search(8));
@@ -120,7 +131,7 @@ REQUIRE(tree.search(7));
 REQUIRE(tree.search(9));
 REQUIRE(tree.search(15));
 REQUIRE(tree.search(13));
-///
+//Удаляем элемент с 2мя поддеревьями
 REQUIRE(tree.del(6));
 REQUIRE(!tree.search(12));
 REQUIRE(tree.search(8));
@@ -130,7 +141,7 @@ REQUIRE(tree.search(7));
 REQUIRE(tree.search(9));
 REQUIRE(tree.search(15));
 REQUIRE(tree.search(13));
-///
+//Удаляем элемент с 1 поддеревом
 REQUIRE(tree.del(13));
 REQUIRE(!tree.search(12));
 REQUIRE(tree.search(8));
@@ -140,7 +151,7 @@ REQUIRE(tree.search(7));
 REQUIRE(tree.search(9));
 REQUIRE(tree.search(15));
 REQUIRE(!tree.search(13));
-///
+//Удаляем лист
 REQUIRE(tree.del(8));
 REQUIRE(!tree.search(12));
 REQUIRE(!tree.search(8));
@@ -150,7 +161,7 @@ REQUIRE(tree.search(7));
 REQUIRE(tree.search(9));
 REQUIRE(tree.search(15));
 REQUIRE(!tree.search(13));
-///
+//Удаляем элемент с 1 поддеревом
 REQUIRE(tree.del(15));
 REQUIRE(!tree.search(12));
 REQUIRE(!tree.search(8));
@@ -160,7 +171,7 @@ REQUIRE(tree.search(7));
 REQUIRE(tree.search(9));
 REQUIRE(!tree.search(15));
 REQUIRE(!tree.search(13));
-///
+//Удаляем лист
 REQUIRE(tree.del(9));
 REQUIRE(!tree.search(12));
 REQUIRE(!tree.search(8));
@@ -170,10 +181,6 @@ REQUIRE(tree.search(7));
 REQUIRE(!tree.search(9));
 REQUIRE(!tree.search(15));
 REQUIRE(!tree.search(13));
-///
-try{ tree.del(7);}
-catch(Tree_Was_Deleted &){G++;}
-REQUIRE(G==1);
 }
 
 SCENARIO("Read_int", "[read_i]") {
