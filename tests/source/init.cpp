@@ -101,7 +101,7 @@ SCENARIO("Search_double", "[search_d]") {
 	REQUIRE(!tree.search(6.22));
 	REQUIRE(!tree.search(8.14));
 }
-/*
+
 SCENARIO("Del", "[del]"){
 BST<int> tree; int G=0;
 tree.add(7);
@@ -169,7 +169,7 @@ try{ tree.del(8);}
 catch(Tree_Was_Deleted &){G++;}//Дерево содается заново
 REQUIRE(G==1);
 }
-*/
+
 SCENARIO("Read_int", "[read_i]") {
 	BST<int> tree; ifstream fin("read.txt");
 	fin >> tree;
@@ -194,7 +194,7 @@ SCENARIO("Read_double", "[read_d]") {
         REQUIRE(tree.search(17.16));
 }
 
-/*SCENARIO("Print_int", "[print_file_i]") {
+SCENARIO("Print_int", "[print_file_i]") {
 	BST<int> tree, tree_2; ofstream fout("print.txt", ios::app);
 	tree.add(7);
         tree.add(3);
@@ -208,7 +208,7 @@ SCENARIO("Read_double", "[read_d]") {
         REQUIRE(tree_2.search(3));
         REQUIRE(tree_2.search(5));
 }
-*/
+
 SCENARIO("Print_file_double", "[print_file_d]") {
 	BST<double> tree, tree_2; ofstream fout("print_double.txt", ios::app);
 	tree.add(7.77);
