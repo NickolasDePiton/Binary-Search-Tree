@@ -13,7 +13,7 @@ Tree_Was_Deleted::Tree_Was_Deleted() : Exceptions("ERROR: Tree was deleted!") {}
 
 template <class T>
 BST<T>::Node::Node(T x) : k(x), l(nullptr), r(nullptr) {}
-template <class Z>
+template <class T>
 void BST<T>::Node::do_free(){
 	if (this){
 	f:
