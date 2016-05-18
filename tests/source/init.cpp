@@ -165,6 +165,9 @@ REQUIRE(!tree.search(3));
 REQUIRE(!tree.search(5));
 REQUIRE(tree.search(8));
 REQUIRE(!tree.search(11));
+try{ tree.del(8);}
+catch(Tree_Was_Deleted &){O++;}//Дерево содается заново
+REQUIRE(O==1);
 }
 
 SCENARIO("Read_int", "[read_i]") {
