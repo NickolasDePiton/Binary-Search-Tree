@@ -79,29 +79,29 @@ void BST<T>::Node::del(T x){
 	if ((x == k) && (!l) && (!r)) { delete this; throw Tree_Was_Deleted(); }
 	if ((x == k) && (!l)) {
 		k = r->k;
-		if (r->l) l = r->l; else { delete[] l; l = nullptr; }
-		if (r->r) r = r->r; else { delete[] r; r = nullptr; }
+		if (r->l) l = r->l; else { delete l; l = nullptr; }
+		if (r->r) r = r->r; else { delete r; r = nullptr; }
 		return;
 	}
 	if ((x == k) && (!r)) {
 		k = l->k;
-		if (l->r) r = l->r; else { delete[] r; r = nullptr; }
-		if (l->l) l = l->l; else { delete[] l; l = nullptr; }
+		if (l->r) r = l->r; else { delete r; r = nullptr; }
+		if (l->l) l = l->l; else { delete l; l = nullptr; }
 		return;
 	}
 	if (x < k) {
-		if ((l->k == x) && (!(l->r)) && (!(l->l))) { delete[] l; l = nullptr; return; }
-		if ((l->k == x) && (l->l) && (l->r)) { l->k = min(l->r); if (l->r->k != min(l->r)) l->r->del(min(l->r)); else { delete[] l->r; l->r = nullptr; } return; }
+		if ((l->k == x) && (!(l->r)) && (!(l->l))) { delete l; l = nullptr; return; }
+		if ((l->k == x) && (l->l) && (l->r)) { l->k = min(l->r); if (l->r->k != min(l->r)) l->r->del(min(l->r)); else { delete l->r; l->r = nullptr; } return; }
 		else; l->del(x);
 		return;
 	}
 	if (x > k) { 
-		if ((r->k == x) && (!(r->r)) && (!(r->l))) { delete[] r; r = nullptr; return; }
-		if ((r->k == x) && (r->l) && (r->r)) { r->k = min(r->r); if (r->r->k != min(r->r)) r->r->del(min(r->r)); else { delete[] r->r; r->r = nullptr; } return;}
+		if ((r->k == x) && (!(r->r)) && (!(r->l))) { delete r; r = nullptr; return; }
+		if ((r->k == x) && (r->l) && (r->r)) { r->k = min(r->r); if (r->r->k != min(r->r)) r->r->del(min(r->r)); else { delete r->r; r->r = nullptr; } return;}
 		else r->del(x);
 		return;
 	}
-	if ((x == k) && (l) && (r)) { k = min(r); if (r->k != min(r)) r->del(min(r)); else { delete[]r; r = nullptr; } return; }
+	if ((x == k) && (l) && (r)) { k = min(r); if (r->k != min(r)) r->del(min(r)); else { delete r; r = nullptr; } return; }
 }
 
 template <class T>
