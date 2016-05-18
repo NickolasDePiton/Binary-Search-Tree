@@ -128,6 +128,7 @@ BST<T>::BST(initializer_list<T> L){
 }
 template <class T>
 BST<T>::~BST() {
+	if (root !=nullptr)
 	parent->do_free(); if(parent) delete parent;
 }
 template <class T>
