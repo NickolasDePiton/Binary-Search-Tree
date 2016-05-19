@@ -3,6 +3,7 @@
 #pragma once
 #include <iostream>
 #include <fstream>
+#include <initializer_list>
 using namespace std;
 
 template <class T>
@@ -76,7 +77,7 @@ public:
 	void del(T x);
 	T min(Node* M);
 	bool print_file(ofstream &fout);
-	void do_free();
+	void do_free(Node* parent);
 private:
 	T k;
 	Node *l;
